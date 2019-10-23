@@ -3,7 +3,7 @@
 This repo contains all the information you will need to start working on the Urban Institute's Challenge to create a novel new dataset on building heights 
 
 ## Overview
-We want you to create a dataset of building heights in Washington DC using input building footprint data, LIDAR data, satellite imagery, and any other auxiliary data sources. Our goal is to generalize the methodologies you develop to create a national dataset of building footprints and heights, so please try to keep auxiliary data sources as generalizable as possible. This work is important for research organizations like us and city governments to 
+We want you to create a dataset of building heights in Washington DC using input building footprint data, LIDAR data, satellite imagery, and any other auxiliary data sources you find. Our goal is to generalize the methodologies you develop to create a national dataset of building footprints and heights, so please try to keep auxiliary data sources as generalizable as possible. This work is important for research organizations like us and city governments to 
 
 1) Understand what kind of housing currently exists in cities  
 2) Create data driven affordable housing plans
