@@ -24,7 +24,7 @@ We recommend starting with the following datasets to generate building heights f
 
 2) LIDAR point cloud data: LIDAR stands for LIght Detection And Ranging, and it's a remote sensing method that emits thousands of light pulses a second to measure distances to the Earth. This data essentially contains a series of dense points along with heights. This data is available as tiled `.LAS` files on S3. Access instructions and more information about these files can be found [here](https://docs.opendata.aws/dc-lidar-2018/readme.html). Couple of notes on this data:
     - These files are separated into numbered tiled 'grids'. You can download a shapefile of the grids (and their associated numbers) by going to the link above. 
-    - For those of you that haven't worked with LAS files before, we provide code examples for how to read in LAS files as sf dataframes using R or as geopandas dataframes using Python in the `scripts` directory.  
+    - For those of you that haven't worked with LAS files before, there are code examples for how to download and read in LAS files as sf dataframes using R or as geopandas dataframes using Python in the `scripts` directory.  
     - These files use the NAD83(2011) projection (CRS 6487).
 
 3) Satelite Imagery
