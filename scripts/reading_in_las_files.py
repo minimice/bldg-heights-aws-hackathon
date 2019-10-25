@@ -3,12 +3,20 @@ from laspy.file import File
 from pandas import DataFrame
 from geopandas import GeoDataFrame
 from shapely.geometry import Point
+import requests
 
-#Read LAS file
-inFile = File("C:/Users/anarayanan/Downloads/1714.las", mode = "r")
+# Download LAS file, all of which are downloadable through https
+url = "https://dc-lidar-2018.s3.amazonaws.com/Classified_LAS/1120.las"
+r = requests.get(url)
+
+with open("data/python-1120.las", 'wb') as f:
+    f.write(r.content)
+
+#Read in LAS file
+inFile = File("data/python-1120.las", mode = "r")
 
 #Import LAS into numpy array (X=raw integer value x=scaled float value)
-#Note that the column
+#Note that the columns specifications are slightly different
 lidar_points = np.array((inFile.X,inFile.Y,inFile.Z,inFile.intensity,
                           inFile.classification, inFile.gps_time, 
                           inFile.overlap, inFile.scan_angle )).transpose()
