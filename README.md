@@ -26,4 +26,26 @@ We recommend starting with the following datasets to generate building heights f
 
 ## FAQ's
 
-1) 
+1) This seems hard! How exactly can we predict building heights?
+    - On the simplest level, this is a data fusion task. We have data
+    on building footprints and heights of points throughout the city. You simply
+    need to come up with a smart merging scheme to combine these two datasets.
+    Note that some buildings may have a lot of overlapping LIDAR points, but
+    some will only have a few. You will have to think critically about whether
+    to take the min/max/avg of the overlapping point heights, whether you should
+    buffer the building footprints, etc. 
+
+2) What additional datasets can we bring in to help us with this task?
+   - Feel free to find and use any additional datasets that you believe will
+     help you with this task. Keep in mind however that our goal is to
+     generalize the techniques you develop to create building heights datasets
+     for all cities across the US. So keep the auxiliary datasets you bring in
+     as generalizable as possible. That being said we'd love to see creative
+     solutions to our problem!
+
+3) How can we check the accuracy of our predicted building heights?
+   - As mentioned above, the building footprint data we provide to you in this
+     repo is a modified version of the original dataset from the DC Open Data
+     Portal. The original dataset actually has the building heights appended.
+     You can use the original dataset as test data to see how accurate your
+     predictions are and to help you fine tune your approaches. 
