@@ -4,9 +4,11 @@ Urban Institute’s challenge to create a novel dataset on building heights.
 
 ## Overview
 We want you to create a dataset of building heights in Washington, DC, using input building footprint data, LIDAR data, satellite imagery, and any other auxiliary data sources you find. Our goal is to generalize the methodologies you develop to create a national dataset of building footprints and heights, so please try to keep auxiliary data sources as generalizable as possible. This work is important for research organizations like us and city governments to achieve the following goals:
-•	understand what kind of housing currently exists in cities  
-•	create data driven affordable housing plans
-•	plan effectively for the future growth of cities
+
+- understand what kind of housing currently exists in cities  
+- create data driven affordable housing plans
+- plan effectively for the future growth of cities
+
 The `docs` directory contains an executive summary, a press release, and a FAQ
 list, which may be helpful for further background information on this project. 
 
