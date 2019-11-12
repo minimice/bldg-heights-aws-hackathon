@@ -16,7 +16,7 @@ list, which may be helpful for further background information on this project.
 We recommend starting with the following datasets to generate building heights for DC. These datasets can either be accessed in the `data` folder or at the specified links:
 
 1) Building footprint data: This is a listing of each of the 100,000+ buildings in DC and their polygon building footprints. These are the data we want you to append with height information. The data can be found in geojson format at `data\training-data\DC_Buildings_Footprint_4326_training.geojson`. Some additional notes about these data follow:
-    - Data include structures originally captured from 2005 aerial imagery, with updates based on 2010 aerial imagery.
+    - Data include structures originally captured from 2005 aerial imagery, with updates based on 2010 aerial imagery. Not every building has been updated based on 2010 imagery, but you can assume this data is correct as of 2010. 
     - In many instances, row houses and other contiguous building rooftops could not be broken apart using the process methodology and appear as a single structure.
     - In accordance with the geojson specification, the file uses the WGS 1984 projection (CRS: 4362).
     - This is a modified version of the [original](https://opendata.dc.gov/datasets/274f7c2b5f7c4ae19f165d9951057a00) dataset, which was in ESRI multipatch format. We have simply stripped a few columns and converted it to the friendlier geojson format using ArcGIS. The original dataset actually has the building heights for each of the buildings because DC was one of the very few cities that contracted a private firm to compute building heights. However, we would like you to predict the building heights of our modified data so we can make the methodology publicly available. If you want, you can use the original dataset to calculate the accuracy of your methodologies.  
@@ -51,3 +51,9 @@ We recommend starting with the following datasets to generate building heights f
      Portal. The original dataset actually has the building heights appended.
      You can use the original dataset as test data to see how accurate your
      predictions are and to help you fine tune your approaches. 
+
+4) It seems like every dataset is from a different point in time
+•	Was every building that was originally captured in 2005 updated in 2010?
+•	If a building has multiple roof heights (eg part of the building is taller that another part) do you want us to predict the maximum height of the building? Average height? Or the separate height of each part of the building?
+•	If a building has a chimney that extends above the height of the roof (or another protrusion of that kind) should we predict the height of the chimney or the height of the roof?
+•	Can we use the actual heights from the original data in a training set to predict the heights in a test set sampled from the building footprint data?
