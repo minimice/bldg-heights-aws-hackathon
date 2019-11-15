@@ -35,7 +35,9 @@ We recommend starting with the following datasets to generate building heights f
     Note that some buildings may have a lot of overlapping LIDAR points, but
     some will only have a few. You will have to think critically about whether
     to take the min/max/avg of the overlapping point heights, whether you should
-    buffer the building footprints, etc. 
+    buffer the building footprints, etc. If you want you can complicate this 
+    task by building machine learning models / neural nets to predict building
+    heights from input data. But this is not required.
 
 2) What additional datasets can we bring in to help us with this task?
    - Feel free to find and use any additional datasets that you believe will
@@ -52,8 +54,18 @@ We recommend starting with the following datasets to generate building heights f
      You can use the original dataset as test data to see how accurate your
      predictions are and to help you fine tune your approaches. 
 
-4) It seems like every dataset is from a different point in time
-•	Was every building that was originally captured in 2005 updated in 2010?
-•	If a building has multiple roof heights (eg part of the building is taller that another part) do you want us to predict the maximum height of the building? Average height? Or the separate height of each part of the building?
-•	If a building has a chimney that extends above the height of the roof (or another protrusion of that kind) should we predict the height of the chimney or the height of the roof?
-•	Can we use the actual heights from the original data in a training set to predict the heights in a test set sampled from the building footprint data?
+
+4) If a building has a chimney that extends above the height of the roof (or another protrusion of that kind) should we predict the height of the chimney or the height of the roof?
+
+    - This is a judgment call. we recommend predicting the height of the roof and not the protrusion. However if the protrusion is very large and covers most of the roof, then it might make sense to predict the height of the protrusion. You can use the original building height dataset (which has actual building heights) to guide your decisions.
+
+5) If a building has multiple roof heights (eg part of the building is taller that another part) do you want us to predict the maximum height of the building? Average height? Or the separate height of each part of the building?
+
+   - Again this is a judgment call. We  want only one height measurement for every building footprint. We think it's a safe bet to predict the height of the largest area of the roof, but again you can test different rules to see which is most accurate.
+    
+6) Was every building that was originally captured in 2005 updated in 2010 in the building heights data?
+    - No, not necessarily. Only some of the buildings that the third party contract deemed as significantly changed were updated using 2010 imagery. But to make thing simpler you can assume that these are accurate  building footprints as of 2015.
+
+7) Can we use the actual heights from the original data in a training set to predict the heights in a test set sampled from . 
+
+
