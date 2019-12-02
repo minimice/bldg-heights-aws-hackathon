@@ -15,8 +15,9 @@ achieve the following goals:
 - create data driven affordable housing plans
 - plan effectively for the future growth of cities
 
-The `docs` directory contains an executive summary, a press release, and a FAQ
-list, which may be helpful for further background information on this project. 
+The `docs` directory contains an executive summary, a press release, and at 
+the bottom of this repo is a FAQ list, which may be helpful for further
+background information on this project. 
 
 ## Data
 We recommend starting with the following datasets to generate building heights
@@ -25,27 +26,34 @@ specified links:
 
 1) Building footprint data: This is a listing of each of the 100,000+ buildings
    in DC and their polygon building footprints. These are the data we want you
-   to append with height information. The data can be found in geojson format at
+   to append with heights. Specifically, we want you to append a column named 
+   'ALTITUDE_M' with the height in meters for every row in the data The data 
+   can be found in geojson format at
    `data\training-data\DC_Buildings_Footprint_4326_training.geojson`. Some
    additional notes about these data follow:
+     - In many instances, row houses and other contiguous building rooftops could
+      not be broken apart using the process methodology and appear as a single
+      structure. We want you to predict a single height for every row in the data. 
+      So if a group of row houses appear as one building in the data, we want 
+      one set of height predictions
+    - In accordance with the geojson specification, the file uses the WGS 1984
+      geographic projection (CRS: 4362).
+    - This is a modified version of the original dataset (which you can find at 
+    - `data\training-data\DC_Buildings_Footprint_4326_test.geojson`). We have simply
+      stripped one column named `ALTITUDE_M` which are in fact the height in meters 
+      of each of the buildings in the dataset. The original dataset actually has the 'true' 
+      building heights because DC was one of the very few cities that contracted a
+      private firm (and paid millions of dollars) to compute building heights. 
+      However the methodology the private firm used to generate the building heights 
+      was opaque, not scalable, and prohibitively expensive. We believe their methodology
+      is mostly reproducible using the datasets we give you below and we would like you
+      to come up with creative methodologies
+      However, we would like you to predict the building heights of our modified data so we can make the
+      methodology publicly available. It is probably a good idea to can use the test
+      dataset to validate the accuracy of your methodologies on the training dataset.
     - Data include structures originally captured from 2005 aerial imagery, with
       updates based on 2010 aerial imagery. Not every building has been updated
       based on 2010 imagery, but you can assume this data is correct as of 2010. 
-    - In many instances, row houses and other contiguous building rooftops could
-      not be broken apart using the process methodology and appear as a single
-      structure.
-    - In accordance with the geojson specification, the file uses the WGS 1984
-      projection (CRS: 4362).
-    - This is a modified version of the
-      [original](https://opendata.dc.gov/datasets/274f7c2b5f7c4ae19f165d9951057a00)
-      dataset, which was in ESRI multipatch format. We have simply stripped a
-      few columns and converted it to the friendlier geojson format using
-      ArcGIS. The original dataset actually has the building heights for each of
-      the buildings because DC was one of the very few cities that contracted a
-      private firm to compute building heights. However, we would like you to
-      predict the building heights of our modified data so we can make the
-      methodology publicly available. If you want, you can use the original
-      dataset to calculate the accuracy of your methodologies.  
 
 2) LIDAR point cloud data: Light detection and ranging (LIDAR) is a remote
    sensing method that emits thousands of light pulses a second to measure
@@ -97,7 +105,8 @@ specified links:
       satellite imagery data in unique/innovative ways, but that is not required
       for a successful submission.
 
-2) Are we required to use all three datasets listed above? No, in fact we expect
+2) Are we required to use all three datasets listed above?
+     - No, in fact we expect
    that most teams won't. We do expect that everyone will use the building
    footprint data as those are the buildings we would like you to predict
    heights for. Exactly how you get the building heights is up to you and is
@@ -131,11 +140,19 @@ specified links:
    - Again this is a judgment call. We  want only one height measurement for every building footprint. We think it's a safe bet to predict the height of the largest area of the roof, but again you can test different rules to see which is most accurate.
     
 7) Was every building that was originally captured in 2005 updated in 2010 in the building heights data?
-    - No, not necessarily. Only some of the buildings that the third party contract deemed as significantly changed were updated using 2010 imagery. But to make thing simpler you can assume that these are accurate  building footprints as of 2015.
+   - No, not necessarily. Only some of the buildings that the third party contract deemed as significantly changed were updated using 2010  imagery. But to make thing simpler you can assume that these are accurate  building footprints as of 2015.
 
 8) Can we use the actual heights from the original footprint data in a training
    set to predict the heights in a test set sampled from the footprint data?
    - Yes, feel free to use supervised learning approaches and use the original
      footprint data as a training set.
 
+9) Do we need to build a frontend app/ User Interface?
+   -  This is not required, but if you feel it may aid your final presentation go ahead. 
+      In the future we are planning to make a web tool that takes in the input datasets
+      and outputs the 'new' dataset with building heights appended and displays a portion 
+      of the data on a map. But again this is not required, we are really interested in the
+      methodologies you develop to predict building heights.
 
+10) If we're using AI / ML models, how do we generate input features?
+      - It is up to you to use the input datasets you choose to generate input features - feel free to be creative! Note that you will need to generate input features on a per building basis. Examples of input features are functions of the intersecting LIDAR points(like the average heights, variance, SD of all intersecting points), functions of LIDAR points within a specific buffer around each building, and functions of satellite imagery associated with that building (if you choose to use this input data)
