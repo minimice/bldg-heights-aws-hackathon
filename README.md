@@ -27,7 +27,7 @@ specified links:
 1) Building footprint data: This is a listing of each of the 100,000+ buildings
    in DC and their polygon building footprints. These are the data we want you
    to append with heights. Specifically, we want you to append a column named 
-   'ALTITUDE_M' with the height in meters for every row in the data The data 
+   'ALTITUDE_M' with the height in meters for every row in the data. The data 
    can be found in geojson format at
    `data\training-data\DC_Buildings_Footprint_4326_training.geojson`. Some
    additional notes about these data follow:
